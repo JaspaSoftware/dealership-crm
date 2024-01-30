@@ -1,26 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TGQ4MZTBE8"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-TGQ4MZTBE8');
-    </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>KB Ratshefola - Taxi & Mobility Specialist</title>
+    <%- include('partials/_header.ejs') %>
+   <title>KB Ratshefola - Taxi & Mobility Specialist</title>
 </head>
 
 <body>
-<div>
     <section id="above-fold">
-        <button>Get Pre Approved Now</button>
+        <button onclick="window.location.href='/pre-approve-now'">Get Pre Approved Now</button>
         <button>Required Documents</button>
         <button>Refer and Earn</button>
         <button>Lexus</button>
@@ -96,70 +83,35 @@
         </ul>
     </section>
 
-    <section id="contact" class="section-flat">
-        <div class="section-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="section-title text-center">
-                            <h2 class="text-white">Contact Us</h2>
-                        </div><!-- .section-title end -->
-                    </div><!-- .col-md-8 end -->
-                    <div class="col-md-12">
-                        <div class="text-center">
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="pt-column">
+    <section id="contact">
+        <h2 class="text-white">Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <strong>Cell</strong>: +27 73 606 6810<br>
+                <strong>Tel</strong>: +27 11 317 8888<br>
+                <strong>Email</strong>: kb@halfway4ways.co.za<br><br>
+                <div class="social-icons-container">
+                    <a href="https://www.facebook.com/profile.php?id=100090419661012&mibextid=ZbWKwL" target="_blank" class="social-icon">
+                        <img src="facebook-f.svg" alt="Facebook"/>
+                    </a>
+                    <a href="https://www.instagram.com/kb.ratshefola?igsh=eTF0ZWJ4Zmd6d29y" target="_blank" class="social-icon">
+                        <img src="instagram.svg" alt="Instagram"/>
+                    </a>
+                    <a href="https://www.tiktok.com/@kb.ratshefola?_t=8imVxnBr1O9&_r=1" target="_blank" class="social-icon">
+                        <img src="tiktok.svg" alt="Tiktok"/>
+                    </a>
+                </div>
+                <button>ABOUT KB</button>
+            </div>
 
-                                        <div class="text-center text-white">
-                                            <strong>Cell</strong>: +27 73 606 6810<br>
-                                            <strong>Tel</strong>: +27 11 317 8888<br>
-                                            <strong>Email</strong>: kb@halfway4ways.co.za<br><br>
-                                            <div class="social-icons-container text-center">
-                                                <a href="https://www.facebook.com/profile.php?id=100090419661012&mibextid=ZbWKwL" target="_blank" class="social-icon">
-                                                    <img src="images/facebook-f.svg" alt="Facebook"/>
-                                                </a>
-                                                <a href="https://www.instagram.com/kb.ratshefola?igsh=eTF0ZWJ4Zmd6d29y" target="_blank" class="social-icon">
-                                                    <img src="images/instagram.svg" alt="Instagram"/>
-                                                </a>
-                                                <a href="https://www.tiktok.com/@kb.ratshefola?_t=8imVxnBr1O9&_r=1" target="_blank" class="social-icon">
-                                                    <img src="images/tiktok.svg" alt="Tiktok"/>
-                                                </a>
-                                            </div>
-
-                                            <a href="kb-ratshefola.php" class="btn btn-default btn-filled hover-anim hover-accent">
-                                                <span class="btn-captcion">ABOUT KB</span>
-                                            </a>
-                                        </div>
-                                    </div><!-- .pt-column end -->
-
-                                </div><!-- .col-md-4 end -->
-                                <div class="col-md-6 col-sm-6 mt-sm-50">
-                                    <div class="pt-column">
-                                        <div class="pt-column-header">
-                                            <div class="price">
-                                                <h3>Halfway Toyota Fourways</h3>
-                                            </div>
-                                        </div><p class="text-center">Cnr. Winnie Mandela & Leslie Road <br>Fourways <br>Johannesburg</p>
-                                        <p class="text-center">P.O. Box 1427<br>Magaliessig<br>2067</p>
-                                    </div><!-- .pt-column end -->
-                                </div><!-- .col-md-4 end -->
-
-                            </div><!-- .row end -->
-
-                        </div><!-- .pricing-table end -->
-                    </div><!-- .col-md-12 end -->
-                </div><!-- .row end -->
-            </div><!-- .container end -->
-        </div><!-- .section-content end -->
-
-    </div><!-- .section-flat end -->
-
-    <footer id="footer">
-        Copyright and disclaimer link
-    </footer><!-- #footer end -->
-
-</div><!-- #full-container end -->
-
+            <div class="contact-address">
+                <h3>Halfway Toyota Fourways</h3>
+                <p>Cnr. Winnie Mandela & Leslie Road<br>Fourways<br>Johannesburg</p>
+                <p>P.O. Box 1427<br>Magaliessig<br>2067</p>
+            </div>
+        </div>
+    </section>
+    <%- include('partials/_footer.ejs') %>
 </body>
 </html>

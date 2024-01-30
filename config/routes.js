@@ -9,6 +9,6 @@ router.get('/', getIndexPage);
 router.get('/pre-approve-now', showForm);
 router.post('/pre-approve-now', submitForm);
 
-router.get('/pre-approval-submitted-successfully', showPreApprovalSubmitted);
+router.get('/pre-approval-submitted', showPreApprovalSubmitted);
 
 module.exports = router;

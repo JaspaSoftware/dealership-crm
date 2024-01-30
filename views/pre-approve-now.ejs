@@ -1,50 +1,198 @@
-<h3>Get Pre-Approved Now</h3>
-<small>Terms & Conditions Apply</small>
-<form id="pre-approve-now-form" action="/pre-approve-now" method="post">
-    <div class="form-group">
-        <input type="text" name="name" id="name" class="form-control" placeholder="Name" required />
-    </div><!-- .form-group end -->
-    <div class="form-group">
-        <input type="text" name="surname" id="surname" class="form-control" placeholder="Surname" required />
-    </div>
-    <div class="form-group">
-        <input type="text" name="email" id="email" class="form-control" placeholder="Email">
-    </div><!-- .form-group end -->
-    <div class="form-group">
-        <input type="text" name="number" id="number" class="form-control" placeholder="Contact Number" required />
-    </div><!-- .form-group end -->
+<head>
+    <%- include('partials/_header.ejs') %>
+    <title>KB Ratshefola - Taxi & Mobility Specialist</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('pre-approve-now-form');
+            const nameInput = document.getElementById('name');
+            const surnameInput = document.getElementById('surname');
+            const emailInput = document.getElementById('email');
+            const numberInput = document.getElementById('number');
+            const vehicleInput = document.getElementById('vehicle');
+            const sourceInput = document.getElementById('source');
 
-    <div class="form-group">
-        <label class="text-left small" >How would you like to apply for your new Toyota</label>
-        <select id="vehicle" name="vehicle" required>
-            <option value="" disabled selected>Select</option>
-            <option value="taxi">Taxi</option>
-            <option value="scholar-transport">Scholar Transport</option>
-            <option value="shuttle">Shuttle Services</option>
-            <option value="personal">Personal</option>
-            <option value="company">Company</option>
-            <option value="e-haling">E-haling</option>
-        </select>
-    </div><!-- .form-group end -->
+            const nameError = document.getElementById('name-error');
+            const surnameError = document.getElementById('surname-error');
+            const emailError = document.getElementById('email-error');
+            const numberError = document.getElementById('number-error');
+            const vehicleError = document.getElementById('vehicle-error');
+            const sourceError = document.getElementById('source-error');
 
-    <div class="form-group">
-        <label class="text-left small">How did you here about us?</label>
-        <select id="source" name="source" required>
-            <option value="" disabled selected>Select</option>
-            <option value="referred">Referred</option>
-            <option value="sms">SMS</option>
-            <option value="print">Flyer/ Print Media</option>
-            <option value="association">Taxi Association</option>
-            <option value="facebook">Facebook</option>
-            <option value="tiktok">TikTok</option>
-            <option value="youtube">YouTube</option>
-            <option value="instagram">Instagram</option>
-            <option value="whatsapp">WhatsApp</option>
+            form.addEventListener('submit', async function (event) {
+                event.preventDefault();
 
-        </select>
-    </div><!-- .form-group end -->
-    <div class="form-group">
-        <button>SUBMIT</button>
-    </div>
+                // Validate name
+                validateInput(nameInput, nameError, 'Name must be at least 3 characters.');
 
-</form>
+                // Validate surname
+                validateInput(surnameInput, surnameError, 'Surname must be at least 3 characters.');
+
+                // Validate email (optional)
+                if (emailInput.value.trim() !== '' && !isValidEmail(emailInput.value)) {
+                    displayError(emailError, 'Invalid email format.');
+                } else {
+                    clearError(emailError);
+                }
+
+                // Validate contact number
+                if (!isValidContactNumber(numberInput.value)) {
+                    displayError(numberError, 'Invalid contact number format (must start with 27 and be 11 digits).');
+                } else {
+                    clearError(numberError);
+                }
+
+                // Validate vehicle and source
+                validateDropdown(vehicleInput, vehicleError, 'Please select an option.');
+                validateDropdown(sourceInput, sourceError, 'Please select an option.');
+
+                // Submit the form if there are no errors
+                if (!hasErrors([nameError, surnameError, emailError, numberError, vehicleError, sourceError])) {
+                    try {
+                        // Perform any additional actions before submitting (if needed)
+
+                        // Submit the form
+                        form.submit();
+                    } catch (error) {
+                        console.error('Error submitting the form:', error);
+                    }
+                }
+            });
+
+            // Helper function to check valid email format
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            // Helper function to check valid contact number format
+            function isValidContactNumber(contactNumber) {
+                const contactNumberRegex = /^27\d{9}$/;
+                return contactNumberRegex.test(contactNumber);
+            }
+
+            // Helper function to display an error message
+            function displayError(errorElement, errorMessage) {
+                errorElement.textContent = errorMessage;
+            }
+
+            // Helper function to clear an error message
+            function clearError(errorElement) {
+                errorElement.textContent = '';
+            }
+
+            // Helper function to validate an input field
+            function validateInput(inputElement, errorElement, errorMessage) {
+                if (inputElement.value.length < 3) {
+                    displayError(errorElement, errorMessage);
+                } else {
+                    clearError(errorElement);
+                }
+            }
+
+            // Helper function to validate a dropdown
+            function validateDropdown(dropdownElement, errorElement, errorMessage) {
+                if (dropdownElement.value === '') {
+                    displayError(errorElement, errorMessage);
+                } else {
+                    clearError(errorElement);
+                }
+            }
+
+            // Helper function to check if there are any errors
+            function hasErrors(errorElements) {
+                return errorElements.some(errorElement => errorElement.textContent !== '');
+            }
+        });
+    </script>
+</head>
+<body>
+<div class="form-container">
+    <h3>Get Pre-Approved Now</h3>
+    <small style="display: block; margin: 0 auto 30px; text-align: center;">Terms & Conditions Apply</small>
+
+    <form id="pre-approve-now-form">
+        <div class="form-group">
+            <label class="text-left small">Name</label>
+            <input type="text" name="name" id="name" required />
+            <span id="name-error" class="error-message"></span>
+        </div><!-- .form-group end -->
+        <div class="form-group">
+            <label class="text-left small">Surname</label>
+            <input type="text" name="surname" id="surname" required />
+            <span id="surname-error" class="error-message"></span>
+        </div>
+        <div class="form-group">
+            <label class="text-left small">Email Address</label>
+            <input type="email" name="email" id="email" >
+            <span id="email-error" class="error-message"></span>
+        </div><!-- .form-group end -->
+        <div class="form-group">
+            <label class="text-left small">Contact Number</label>
+            <input type="number" name="number" id="number" required />
+            <span id="number-error" class="error-message"></span>
+        </div><!-- .form-group end -->
+
+        <div class="form-group">
+            <label class="text-left small">How would you like to apply for your new Toyota</label>
+            <select id="vehicle" name="vehicle" required>
+                <option value="" disabled selected>Select</option>
+                <option value="taxi">Taxi</option>
+                <option value="scholar-transport">Scholar Transport</option>
+                <option value="shuttle">Shuttle Services</option>
+                <option value="personal">Personal</option>
+                <option value="company">Company</option>
+                <option value="e-haling">E-haling</option>
+            </select>
+        </div><!-- .form-group end -->
+
+        <div class="form-group">
+            <label class="text-left small">How did you hear about us?</label>
+            <select id="source" name="source" required>
+                <option value="" disabled selected>Select</option>
+                <option value="referred">Referred</option>
+                <option value="sms">SMS</option>
+                <option value="print">Flyer/ Print Media</option>
+                <option value="association">Taxi Association</option>
+                <option value="facebook">Facebook</option>
+                <option value="tiktok">TikTok</option>
+                <option value="youtube">YouTube</option>
+                <option value="instagram">Instagram</option>
+                <option value="whatsapp">WhatsApp</option>
+            </select>
+        </div><!-- .form-group end -->
+        <div class="form-group">
+            <button id="submitButton">Submit</button>
+        </div>
+        <script>
+            document.getElementById('submitButton').addEventListener('click', function () {
+                // Your form data
+                const formData = new FormData();
+                formData.append('name', document.getElementById('name').value);
+                formData.append('surname', document.getElementById('surname').value);
+                // Add other form fields as needed
+
+                // Perform the POST request
+                fetch('/pre-approve-now', {
+                    method: 'POST',
+                    body: formData,
+                    // You might need to add headers if required (e.g., 'Content-Type': 'application/json')
+                })
+                    .then(response => {
+                        // Handle the response as needed
+                        if (response.ok) {
+                            // If the response is successful, navigate to the desired page
+                            window.location.href = '/pre-approval-submitted';
+                        } else {
+                            // Handle errors if necessary
+                            console.error('Failed to submit the form:', response.statusText);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error submitting the form:', error);
+                    });
+            });
+        </script>
+    </form>
+</div>
+<%- include('partials/_footer.ejs') %>
+</body>
