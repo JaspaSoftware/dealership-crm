@@ -1,166 +1,58 @@
 <html lang="en">
 <head>
+    <%- include('partials/_header.ejs') %>
     <title>POPIA Consent, & Consent to Direct Marketing</title>
 </head>
-<body>
-<div class="container">
-    <div class="row justify-content-center mt-5 ">
-        <div class="col-sm-12 col-md-5 col-lg-5 col-md-push-3">
-            <h3>POPIA Consent, & Consent to Direct Marketing</h3>
-            <hr>
-            <div class="pt-10 col-md-4 col-lg-12 col-md-push-4 mt-10">
-                <div class="col-lg-12 col-lg-push-0 col-md-push-3">
-                    <div class="box-title text-center">
-                        <span class="small" >All fields are compulsory</span>
-                    </div>
-                    <div class="box-content">
-                        <form id="leadForm" action="process-consent-form.php" method="post">
-                            <div class="form-group">
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Full Names as Per ID" required>
-                            </div><!-- .form-group end -->
-                            <div class="form-group">
-                                <input type="text" name="surname" id="surname" class="form-control" placeholder="Surname" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="number" name="id-number" id="email" class="form-control" placeholder="South African ID No.">
-                            </div><!-- .form-group end -->
-                            <div class="form-group">
-                                <span class="field-icon icon ">+27</span>
-                                <input type="text" name="number" id="number" class="form-control" placeholder=" Contact Number" required>
-                            </div><!-- .form-group end -->
-
-                            <div class="form-group">
-                                <span class="field-icon icon ">+27</span>
-                                <input type="text" name="anumber" id="anumber" class="form-control" placeholder=" Alternative Contact Number" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="province">Physical Address</label>
-                                <input type="text" name="house" id="house" class="form-control" placeholder="House/Stand No." required />
-                                <input type="text" name="street" id="street" class="form-control mt-10" placeholder="Street Name" required />
-                                <input type="text" name="suburb" id="suburb" class="form-control  mt-10" placeholder="Suburb" required />
-                                <input type="text" name="city" id="city" class="form-control mt-10" placeholder="City" required />
-                                <select id="province" name="province" class="form-control mt-10" required>
-                                    <option value="" disabled selected>Select Province</option>
-                                    <option value="Eastern Cape">Eastern Cape</option>
-                                    <option value="Free State">Free State</option>
-                                    <option value="Gauteng">Gauteng</option>
-                                    <option value="KwaZulu-Natal">KwaZulu-Natal</option>
-                                    <option value="Limpopo">Limpopo</option>
-                                    <option value="Mpumalanga">Mpumalanga</option>
-                                    <option value="Northern Cape">Northern Cape</option>
-                                    <option value="North West">North West</option>
-                                    <option value="Western Cape">Western Cape</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="province">Bank Details</label>
-                                <select id="bank-name" name="bank-name" required>
-                                    <option value="" disabled selected>Select Bank</option>
-                                    <option value="Capitec">Capitec</option>
-                                    <option value="ABSA">ABSA</option>
-                                    <option value="FNB">FNB</option>
-                                    <option value="Nedbank">Nedbank</option>
-                                    <option value="Standard Bank">Standard Bank</option>
-                                    <option value="Bidvest">Bidvest</option>
-                                    <option value="Investec">Investec</option>
-                                </select>
-                                <input type="number" name="account-number" id="account-number" class="form-control mt-10" placeholder="Account Number" required />
-                                <input type="text" name="account-holder" id="account-holder" class="form-control mt-10" placeholder="Account Holder" required />
-                                <select id="account-type" name="account-type" class="form-control mt-10" required>
-                                    <option value="" disabled selected>Select Account Type</option>
-                                    <option value="Savings">Savings</option>
-                                    <option value="Cheque">Cheque</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="province">Next of Kin</label>
-                                <input type="text" name="kName" id="kName" class="form-control" placeholder="Name" required />
-                                <input type="text" name="kSurname" id="kSurname" class="form-control mt-10" placeholder="Surname" required />
-                                <input type="number" name="kContact" id="kContact" class="form-control  mt-10" placeholder="Contact Number" required />
-                            </div>
-
-                            <div class="form-group">
-                                <div style="display: flex; align-items: start; font-size: 12px !important;">
-                                    <p class="small">
-                                        I voluntarily give consent to this dealership to process my personal information indefinitely for the dealership to fulfil their contractual obligations, to achieve their business objectives, for marketing and legal compliance purposes.
-                                    </p>
-                                    <input type="checkbox" id="process-information" name="process-information"  required>
-                                </div>
-                                <div style="display: flex; align-items: start; ; font-size: 12px !important;">
-                                    <p class="small">
-                                        I understand that third parties will have access to my personal information, and I hereby give consent to the dealership to share my personal information, strictly for reporting to the relevant authorities and to render the services requested by me.
-                                    </p>
-                                    <input type="checkbox" id="third-parties" name="third-parties"  required>
-                                </div>
-                                <div style="display: flex; align-items: start;; font-size: 12px !important;">
-                                    <p class="small">
-                                        I further understand that all my personal information which I provide to this dealership will be processed securely for the purpose for which it was collected.
-                                    </p>
-                                    <input type="checkbox" id="secured-processing" name="secured-processing"  required>
-                                </div>
-                                <div style="display: flex; align-items: start; font-size: 12px !important;">
-                                    <p class="small">
-                                        I declare that all my personal information provided to this dealership is accurate, up to date, is not misleading and that it is complete in all respects.
-                                    </p>
-                                    <input type="checkbox" id="accurate-information" name="accurate-informatioon"  required>
-                                </div>
-                                <div style="display: flex; align-items: start;font-size: 12px !important;">
-                                    <p class="small">
-                                        I understand that I can request this dealership to amend, delete and/ or destruct my personal information at any time and that I may object to the processing of my personal information.
-                                    </p>
-                                    <input type="checkbox" id="ammend-information" name="ammend-information"  required>
-                                </div>
-                                <div style="display: flex; align-items: start; font-size: 12px !important;">
-                                    <p class="small">
-                                        I am aware that I may file a complaint with the Information Officer of the dealership at any time should my concern in regard to my application be unsatisfactory to my understanding.
-                                    </p>
-                                    <input type="checkbox" id="file-complain" name="file-complain"  required>
-                                </div>
-                                <div style="display: flex; align-items: start; font-size: 12px !important;">
-                                    <p class="small">
-                                        I understand the dealership’s privacy notice, which specifically sets out that my personal information will be processed and kept confidential, and I understand my rights in regard to my personal information
-                                    </p>
-                                    <input type="checkbox" id="dealer-privacy" name="dealer-privacy"  required>
-                                </div>
-
-                                <label>I give my consent to receive direct marketing of goods or services to be marketed by means of electronic communication for:</label>
-
-                                <div style="display: flex; align-items: start; font-size: 12px !important;">
-                                    <p class="small">
-                                        COMPREHENSIVE INSURANCE (all comprehensive insurance transactions must be recorded, and for that purpose, the Comprehensive Insurance Service Provider will only be able to contact the data subject electronically)
-                                    </p>
-                                    <input type="checkbox" id="comprehensive-insurance" name="comprehensive-insurance"  required>
-                                </div>
-
-                                <div style="display: flex; align-items: start; font-size: 12px !important;">
-                                    <p class="small">
-                                        I agree that by completing the Pre-Approval process I am not guaranteed a vehicle finance approval, only efficient feedback based on my credit profile. </p>
-                                    <input type="checkbox" id="pre-approval-process" name="pre-approval-process"  required>
-                                </div>
-
-                                <div style="display: flex; align-items: start; font-size: 12px !important;">
-                                    <p class="small">
-                                        I acknowledge that I have read, understood and agree to the above statements and provided information.  </p>
-                                    <input type="checkbox" id="acknowledge" name="acknowledge"  required>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <button class="btn btn-default btn-filled hover-anim hover-accent" type="submit">
-                                    <span class="btn-caption">SUBMIT</span>
-                                </button>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
+<body style="background-image: url('bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<div class="form-container" style="background-color: #f0f0f0; padding: 20px;">
+    <h3>Personal Details</h3>
+    <hr>
+    <form id="popia-form" action="/popia" method="post">
+        <div class="form-group">
+            <label class="text-left small"  for="name">Full Names as Per ID</label>
+            <input type="text" name="name" id="name" required>
         </div>
-    </div>
+        <div class="form-group">
+            <label class="text-left small"  for="surname">Surname</label>
+            <input type="text" name="surname" id="surname" required>
+        </div>
+        <div class="form-group">
+            <label  class="text-left small" for="id-number">South African ID No.</label>
+            <input type="number" name="id-number" id="id-number">
+        </div>
+        <div class="form-group">
+            <label  class="text-left small" for="number">Contact Number</label>
+            <input type="text" name="number" id="number" required>
+        </div>
+        <div class="form-group">
+            <label  class="text-left small" for="anumber">Alternative Contact Number</label>
+            <input type="text" name="anumber" id="anumber" required>
+        </div>
+        <div class="form-group">
+            <label  class="text-left small" for="house">House/Stand No.</label>
+            <input  class="text-left small" type="text" name="house" id="house" required>
+            <label  class="text-left small" for="street">Street Name</label>
+            <input type="text" name="street" id="street" required>
+            <label  class="text-left small" for="suburb">Suburb</label>
+            <input type="text" name="suburb" id="suburb" required>
+            <label  class="text-left small" for="city">City</label>
+            <input type="text" name="city" id="city" required>
+            <label  class="text-left small" for="province">Select Province</label>
+            <select id="province" name="province" required>
+                <option value="" disabled selected>Select Province</option>
+                <option value="Eastern Cape">Eastern Cape</option>
+                <option value="Free State">Free State</option>
+                <option value="Gauteng">Gauteng</option>
+                <!-- Add other options for provinces -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button type="submit">CONTINUE TO BANKING DETAILS</button>
+        </div>
+    </form>
 </div>
+<%- include('partials/_footer.ejs') %>
 </body>
 
 </html>

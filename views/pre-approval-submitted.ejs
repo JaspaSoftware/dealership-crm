@@ -1,6 +1,23 @@
-<p>Thank you for providing us with your contact details, one of our dedicated consultants will contact you soon.</p>
-<p>Click HOME for required documents and submission, remember to include your contact details.</p>
-<button>HOME</button>
-<p>Or click CONTINUE to apply for Vehicle Finance Pre-Approval</p>
-<small>Terms & Conditions Apply</small>
-<button>CONTINUE</button>
+
+
+<head>
+    <%- include('partials/_header.ejs') %>
+    <title>Thank you</title>
+</head>
+<body style="background-image: url('thankyou.jpg'); text-align: center; background-size: cover; background-position: center; background-repeat: no-repeat;">
+<div class="form-container" style="background-color: #f0f0f0; padding: 20px; margin-top: 20vh">
+    <p>Thank you for providing us with your contact details, one of our dedicated consultants will contact you soon.</p>
+    <p>Click HOME for required documents and submission, remember to include your contact details.</p>
+    <div class="form-group">
+        <button id="homeButton" onclick="window.location.href='/'">HOME</button>
+    </div>
+    <p>Or click CONTINUE to apply for Vehicle Finance Pre-Approval</p>
+
+    <div class="form-group"  style="margin-top: 20px;">
+        <button id="continueButton" onclick="window.location.href='/popia'">CONTINUE</button>
+    </div>
+    <small style="margin-bottom: 10px;">Terms & Conditions Apply</small>
+</div>
+
+<%- include('partials/_footer.ejs') %>
+</body>
