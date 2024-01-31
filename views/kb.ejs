@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <%- include('partials/_header.ejs') %>
+    <title>About Kabelo Ratshefola</title>
+    <style>
+        @font-face {
+            font-family: 'beauchas93';
+            src: url('Bauhaus93.woff') format('woff');
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .heading-200 {
+            font-family: 'beauchas93', sans-serif;
+        }
+
+        .no-margin-padding {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body style="background-image: url('bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<div class="form-container" style="background-color: #f0f0f0; padding: 20px; margin-top: 20vh">
+    <img style="display: block; margin: 0 auto; padding-top: 90px; padding-bottom: 0; margin-bottom: 0;" src="kb.jpg" width="350" height="400" alt="KB Ratshefola" />
+<div class="col-md-6" style="align-items: flex-start">
+    <h1 class="text-center heading-200 no-margin-padding">
+        <span class="heading-200">KB Ratshefola </span>
+    </h1>
+    <h4 class="text-center no-margin-padding" >TAXI & MOBILITY SPECIALIST</h4>
+    <p class="description small">
+        I am results-driven individual with almost two decades of combined experience in the motor industry. This experience is complemented by extensive expertise in brand and product specialization, marketing consultancy, leads generation, and virtual communication</p>
+
+    <p class="description small">My attributes have allowed me to become a noticeable member in specialized business communities with strong interests in continuously increasing sales and marketing opportunities. I personalise my services to understand clients with their respective motoring needs, extending my expertise from Taxi Entrepreneurs to Specialized Service Providers, and from Businesses to Individuals seeking Mobility Solutions to meet their motoring needs.</p>
+    <p>"It will be my greatest pleasure to assist you with your motoring needs.</p>
+    <p><i>You can accomplish anything in life, provided you don’t mind who gets the credit”</i></p>
+    <div class="form-group"  style="margin-top: 20px;">
+        <button id="homeButton" onclick="window.location.href='/'">Home</button>
+    </div>
+</div>
+
+<%- include('partials/_footer.ejs') %>
+</body>
+
+</html>

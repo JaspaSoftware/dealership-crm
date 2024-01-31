@@ -1,6 +1,6 @@
 
 const express = require('express');
-const {getIndexPage} = require("../controllers/main_controller");
+const {getIndexPage, showAboutKb, showRefer, submitReferral, showReferralLink} = require("../controllers/main_controller");
 const {showForm, submitForm, showPreApprovalSubmitted} = require("../controllers/pre_approval_controller");
 const {bookTestDriveForm, submitTestDriveForm, showBookingConfirmed} = require("../controllers/lexus_controller");
 const {showPopiaForm, submitPopiaForm, showBankingDetailsForm, submitBankingDetailsForm, showConsentForm,
@@ -33,5 +33,12 @@ router.get('/consent', showConsentForm);
 router.post('/consent', submitConsentForm);
 
 router.get('/thank-you', showThankYou);
+
+router.get('/kb', showAboutKb);
+
+router.get('/refer', showRefer);
+router.post('/refer', submitReferral);
+
+router.get('/referral-link', showReferralLink);
 
 module.exports = router;

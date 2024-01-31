@@ -1,4 +1,5 @@
-const {query} = require("../config/database");
+const connection = require("../config/database");
+
 
 exports.showForm = (req, res) => {
     res.render('pre-approve-now');
@@ -6,13 +7,12 @@ exports.showForm = (req, res) => {
 
 exports.submitForm = (req, res) => {
     try {
-        console.log('form submited');
         res.redirect('pre-approval-submitted')
          const { name, surname, email, number, vehicle, source } = req.body;
          const sql = 'INSERT INTO tbl_pre_approvals (name, surname, email, number, vehicle, source) VALUES (?, ?, ?, ?, ?, ?)';
          const values = [name, surname, email, number, vehicle, source];
 
-         query(sql, values, (err, result) => {
+        connection.execute(sql, values, (err, result) => {
              if (err) {
                  console.error('Error inserting data into MySQL: ', err);
                  res.status(500).send('Internal Server Error');
