@@ -20,7 +20,7 @@ exports.submitPopiaForm = async (req, res) => {
         } = req.body;
 
         const [result] = await connection.execute(
-            'INSERT INTO tbl_applications (name, surname, id_number, contact_number, alternative_contact_number, house, street, suburb, city, province) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            'INSERT INTO tbl_applications (name, surname, idNumber, number, anumber, house, street, suburb, city, province) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
             [
                 name,
                 surname,
@@ -32,7 +32,7 @@ exports.submitPopiaForm = async (req, res) => {
                 suburb,
                 city,
                 province
-            ])
+            ]);
 
         if (result.affectedRows === 1) {
             res.redirect('banking-details');
@@ -51,5 +51,23 @@ exports.showBankingDetailsForm = (req, res) => {
 };
 
 exports.submitBankingDetailsForm = (req, res) => {
-
+    res.render('next-of-kin');
 };
+
+exports.showNextOfKinForm = (req, res) => {
+    res.render('next-of-kin');
+};
+
+exports.submitConsentForm = (req, res) => {
+    res.render('thank-you');
+};
+
+exports.showConsentForm = (req, res) => {
+    res.render('consent');
+};
+
+exports.showThankYou = (req, res) => {
+    res.render('thank-you');
+};
+
+

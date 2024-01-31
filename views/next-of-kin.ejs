@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <%- include('partials/_header.ejs') %>
+    <title>Banking Details</title>
+</head>
+<body style="background-image: url('bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<div class="form-container" style="background-color: #f0f0f0; padding: 20px;">
+    <h3>Next of Kin</h3>
+    <hr>
+    <form id="next-of-kun-form" action="/consent" method="post">
+        <div class="form-group">
+            <label  class="text-left small" for="kName">Next of Kin</label>
+            <input type="text" name="kName" id="kName" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label  class="text-left small" for="kSurname">Surname</label>
+            <input type="text" name="kSurname" id="kSurname" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label  class="text-left small" for="kNumber">Contact Number</label>
+            <input type="text" name="kNumber" id="kNumber" class="form-control" required />
+         </div>
+        <div class="form-group">
+            <button type="submit">CONTINUE TO CONSENT</button>
+        </div>
+    </form>
+</div>
+<%- include('partials/_footer.ejs') %>
+</body>
+
+</html>

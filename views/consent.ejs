@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+    <%- include('partials/_header.ejs') %>
+    <title>Consent</title>
+</head>
+<body style="background-image: url('bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<div class="form-container" style="background-color: #f0f0f0; padding: 20px;">
+    <h3>Next of Kin</h3>
+    <hr>
+    <form id="consent-form" action="/consent" method="post">
+
+        <div class="form-group">
+            <div style="display: flex; align-items: center; font-size: 12px !important;">
+                <p class="small">
+                    I voluntarily give consent to this dealership to process my personal information indefinitely for the dealership to fulfil their contractual obligations, to achieve their business objectives, for marketing and legal compliance purposes.
+                </p>
+                <input type="checkbox" id="process-information" name="process-information" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div style="display: flex; align-items: center; font-size: 12px !important;">
+                <p class="small">
+                    I understand that third parties will have access to my personal information, and I hereby give consent to the dealership to share my personal information, strictly for reporting to the relevant authorities and to render the services requested by me.
+                </p>
+                <input type="checkbox" id="third-parties" name="third-parties" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div style="display: flex; align-items: center; font-size: 12px !important;">
+                <p class="small">
+                    I further understand that all my personal information which I provide to this dealership will be processed securely for the purpose for which it was collected.
+                </p>
+                <input type="checkbox" id="secured-processing" name="secured-processing" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div style="display: flex; align-items: center; font-size: 12px !important;">
+                <p class="small">
+                    I declare that all my personal information provided to this dealership is accurate, up to date, is not misleading and that it is complete in all respects.
+                </p>
+                <input type="checkbox" id="accurate-information" name="accurate-informatioon" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div style="display: flex; align-items: center; font-size: 12px !important;">
+                <p class="small">
+                    I understand that I can request this dealership to amend, delete and/ or destruct my personal information at any time and that I may object to the processing of my personal information.
+                </p>
+                <input type="checkbox" id="ammend-information" name="ammend-information" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div style="display: flex; align-items: center; font-size: 12px !important;">
+                <p class="small">
+                    I am aware that I may file a complaint with the Information Officer of the dealership at any time should my concern in regard to my application be unsatisfactory to my understanding.
+                </p>
+                <input type="checkbox" id="file-complain" name="file-complain" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div style="display: flex; align-items: center; font-size: 12px !important;">
+                <p class="small">
+                    I understand the dealership’s privacy notice, which specifically sets out that my personal information will be processed and kept confidential, and I understand my rights in regard to my personal information
+                </p>
+                <input type="checkbox" id="dealer-privacy" name="dealer-privacy" required>
+            </div>
+
+            <label>I give my consent to receive direct marketing of goods or services to be marketed by means of electronic communication for:</label>
+        </div>
+        <div class="form-group">
+            <div style="display: flex; align-items: center; font-size: 12px !important;">
+                <p class="small">
+                    COMPREHENSIVE INSURANCE (all comprehensive insurance transactions must be recorded, and for that purpose, the Comprehensive Insurance Service Provider will only be able to contact the data subject electronically)
+                </p>
+                <input type="checkbox" id="comprehensive-insurance" name="comprehensive-insurance" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div style="display: flex; align-items: center; font-size: 12px !important;">
+                <p class="small">
+                    I agree that by completing the Pre-Approval process I am not guaranteed a vehicle finance approval, only efficient feedback based on my credit profile.
+                </p>
+                <input type="checkbox" id="pre-approval-process" name="pre-approval-process" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div style="display: flex; align-items: center; font-size: 12px !important;">
+                <p class="small">
+                    I acknowledge that I have read, understood and agree to the above statements and provided information.
+                </p>
+                <input type="checkbox" id="acknowledge" name="acknowledge" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit">SUBMIT</button>
+        </div>
+    </form>
+</div>
+<%- include('partials/_footer.ejs') %>
+</body>
+</html>
