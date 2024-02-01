@@ -1,45 +1,30 @@
+const mysql = require("mysql2/promise");
 
-const connection = require("../config/database");
+const connection = mysql.createPool({
+    connectionLimit: 10,
+    host: 'jaspa-mysqldb-server.mysql.database.azure.com',
+    user: 'jaspadbadmin',
+    password: '1qazxsw2#EDC',
+    database: 'dealercrm',
+    ssl: {
+        rejectUnauthorized: false,
+    },
+});
+
 exports.showPopiaForm = (req, res) => {
     res.render('popia');
 };
 
 exports.submitPopiaForm = async (req, res) => {
     try {
-        const {
-            name,
-            surname,
-            idNumber,
-            number,
-            anumber,
-            house,
-            street,
-            suburb,
-            city,
-            province,
-        } = req.body;
+        const {name, surname, idNumber, number, anumber, house, street, suburb, city, province} = req.body;
+        const sql = 'INSERT INTO tbl_applications (name, surname, idNumber, number, anumber, house, street, suburb, city, province) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        const values  = [
+            name, surname, idNumber, number, anumber, house, street, suburb, city, province];
 
-        const [result] = await connection.execute(
-            'INSERT INTO tbl_applications (name, surname, idNumber, number, anumber, house, street, suburb, city, province) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            [
-                name,
-                surname,
-                idNumber,
-                number,
-                anumber,
-                house,
-                street,
-                suburb,
-                city,
-                province
-            ]);
+        const [result] = await connection.query(sql, values);
+        res.redirect('banking-details');
 
-        if (result.affectedRows === 1) {
-            res.redirect('banking-details');
-        } else {
-            // Failed insertion
-            res.status(500).send('Error storing data in the database.');
-        }
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');
@@ -59,7 +44,7 @@ exports.showNextOfKinForm = (req, res) => {
 };
 
 exports.submitConsentForm = (req, res) => {
-    res.render('thank-you');
+    res.render('consent');
 };
 
 exports.showConsentForm = (req, res) => {

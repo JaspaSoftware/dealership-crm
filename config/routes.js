@@ -30,7 +30,7 @@ router.get('/next-of-kin', showBankingDetailsForm);
 router.post('/next-of-kin', submitBankingDetailsForm);
 
 router.get('/consent', showConsentForm);
-router.post('/consent', submitConsentForm);
+router.post('/consent',showThankYou );
 
 router.get('/thank-you', showThankYou);
 

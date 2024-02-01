@@ -1,28 +1,29 @@
-const connection = require("../config/database");
+const mysql = require("mysql2/promise");
 
+const connection = mysql.createPool({
+    connectionLimit: 10,
+    host: 'jaspa-mysqldb-server.mysql.database.azure.com',
+    user: 'jaspadbadmin',
+    password: '1qazxsw2#EDC',
+    database: 'dealercrm',
+    ssl: {
+        rejectUnauthorized: false,
+    },
+});
 
 exports.showForm = (req, res) => {
     res.render('pre-approve-now');
 };
 
-exports.submitForm = (req, res) => {
+exports.submitForm = async (req, res) => {
     try {
-        res.redirect('pre-approval-submitted')
-         const { name, surname, email, number, vehicle, source } = req.body;
-         const sql = 'INSERT INTO tbl_pre_approvals (name, surname, email, number, vehicle, source) VALUES (?, ?, ?, ?, ?, ?)';
-         const values = [name, surname, email, number, vehicle, source];
-
-        connection.execute(sql, values, (err, result) => {
-             if (err) {
-                 console.error('Error inserting data into MySQL: ', err);
-                 res.status(500).send('Internal Server Error');
-             } else {
-                 console.log('Data inserted successfully');
-                 res.redirect('/pre-approval-submitted-successfully');
-             }
-         });
+        const { name, surname, email, number, vehicle, source } = req.body;
+        const sql = 'INSERT INTO `tbl_pre-approvals` (name, surname, email, number, vehicle, source) VALUES (?, ?, ?, ?, ?, ?)';
+        const values = [name, surname, email, number, vehicle, source];
+        const [result] = await connection.query(sql, values);
+        res.redirect('pre-approval-submitted');
     } catch (error) {
-        console.error('Error: ', error);
+        console.error('Error:', error);
         res.status(500).send('Internal Server Error');
     }
 };
